@@ -1,6 +1,6 @@
 Designing an ATM System involves breaking down the system into key components, defining database tables, applying design patterns, detailing classes, interfaces, enums, and understanding class relationships. Here's a comprehensive breakdown:
 
-1. Key Components
+**1. Key Components**
    User Authentication: Verify user credentials (e.g., card number, PIN).
     Account Management: Manage user accounts (e.g., checking, savings).
     Transaction Management: Handle transactions (e.g., withdraw, deposit, transfer).
@@ -10,24 +10,24 @@ Designing an ATM System involves breaking down the system into key components, d
     Security System: Ensure secure transactions and user data.
     Notification System: Notify users about transactions (e.g., SMS, email).
 
-2. Database Tables
+**2. Database Tables**
    Here are the essential tables for the system:
 
-    User
+    **User**
     
     user_id (PK)
     name
     email
     phone
     
-    Account
+    **Account**
     
     account_id (PK)
     user_id (FK to User)
     account_type (e.g., CHECKING, SAVINGS)
     balance
     
-    Card
+    **Card**
     
     card_id (PK)
     account_id (FK to Account)
@@ -35,7 +35,7 @@ Designing an ATM System involves breaking down the system into key components, d
     pin_hash
     status (e.g., ACTIVE, BLOCKED)
     
-    Transaction
+    **Transaction**
     
     transaction_id (PK)
     account_id (FK to Account)
@@ -43,19 +43,19 @@ Designing an ATM System involves breaking down the system into key components, d
     amount
     timestamp
     
-    CashDispenser
+    **CashDispenser**
     
     dispenser_id (PK)
     total_cash
     last_refilled (timestamp)
     
-    Receipt
+    **Receipt**
     
     receipt_id (PK)
     transaction_id (FK to Transaction)
     printed_at (timestamp)
     
-    Notification
+    **Notification**
     
     notification_id (PK)
     user_id (FK to User)
@@ -63,20 +63,20 @@ Designing an ATM System involves breaking down the system into key components, d
     is_read (boolean)
     created_at
 
-3. Design Patterns
+**3. Design Patterns**
     Singleton Pattern: Use for services like CashDispenser or ReceiptPrinter to ensure a single instance.
     State Pattern: Use to manage the state of the ATM (e.g., idle, processing, out of service).
     Observer Pattern: Use for notifying users about transactions.
     Strategy Pattern: Use for different transaction types (e.g., withdraw, deposit, transfer).
     Facade Pattern: Use to simplify interactions between subsystems (e.g., withdrawing cash involves account management, cash dispenser, and receipt printer).
 
-4. Classes, Interfaces, and Enums in Textual Format
-    Enums
+**4. Classes, Interfaces, and Enums in Textual Format**
+    **Enums**
     AccountType: CHECKING, SAVINGS
     CardStatus: ACTIVE, BLOCKED
     TransactionType: WITHDRAW, DEPOSIT, TRANSFER
 
-    Interfaces
+    **Interfaces**
     UserAuthentication
     Methods: authenticate(cardNumber, pin)
     
@@ -95,7 +95,7 @@ Designing an ATM System involves breaking down the system into key components, d
     NotificationService
     Methods: sendNotification(userId, message)
     
-    Classes
+    **Classes**
     User
     Fields: userId, name, email, phone
     Methods: Getters and Setters
@@ -124,14 +124,14 @@ Designing an ATM System involves breaking down the system into key components, d
     Fields: notificationId, userId, message, isRead, createdAt
     Methods: markAsRead()
 
-5. Class Relationships
+**5. Class Relationships**
     User has many Accounts (one-to-many).
     Account has one Card (one-to-one).
     Account has many Transactions (one-to-many).
     Transaction belongs to an Account (many-to-one).
     CashDispenser and ReceiptPrinter are managed by the ATM (one-to-one).
 
-   6. Example Workflow
+**6. Example Workflow**
    A user inserts their card and enters their PIN.
    The UserAuthentication service verifies the credentials.
    The user selects a transaction type (e.g., withdraw, deposit, transfer).
