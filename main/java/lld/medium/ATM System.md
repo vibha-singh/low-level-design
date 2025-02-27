@@ -71,6 +71,7 @@ Designing an ATM System involves breaking down the system into key components, d
     Facade Pattern: Use to simplify interactions between subsystems (e.g., withdrawing cash involves account management, cash dispenser, and receipt printer).
 
 **4. Classes, Interfaces, and Enums in Textual Format**
+
     **Enums**
     AccountType: CHECKING, SAVINGS
     CardStatus: ACTIVE, BLOCKED
